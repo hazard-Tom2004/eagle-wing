@@ -1,0 +1,254 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global CSS variables (exact design tokens) */
+:root {
+  --color-primary-navy: #1e3a5f;
+  --color-accent-blue: #549fe5;
+   --color-accent-blue1:rgb(19, 140, 161)5;
+  --color-accent-orange: #f76300;
+  --color-muted-text: #1e3a5f99;
+  --color-footer-bg: #1e3a5f;
+  --color-neutral-white: #ffffff;
+  /* Font fallback variable to avoid remote font fetch during build */
+  --font-inter: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+
+/* Design System: BeeSeek-inspired tokens applied globally */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: var(--font-inter, system-ui, -apple-system, 'Segoe UI', sans-serif);
+    line-height: 1.6;
+    color: var(--color-muted-text);
+    background: linear-gradient(180deg, rgba(246,248,250,0.6), var(--color-neutral-white));
+  }
+
+  /* Headings: bold, tight line-height, strong navy color */
+  h1, h2, h3, h4 {
+    font-weight: 700;
+    line-height: 1.05;
+    color: var(--color-primary-navy);
+  }
+
+  h1 { font-size: 2.5rem; }
+  h2 { font-size: 1.875rem; }
+  h3 { font-size: 1.5rem; }
+  h4 { font-size: 1.25rem; }
+
+  /* Body text normalized */
+  p, li, span, a { color: var(--color-muted-text); }
+}
+
+/* Glassmorphism Effects */
+.glass-card {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(84, 159, 229, 0.12); /* accent-blue subtle border */
+  box-shadow: 0 8px 32px rgba(30, 58, 95, 0.06);
+  transition: all 0.28s ease;
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.88);
+  border-color: rgba(247, 99, 0, 0.18); /* accent orange on hover */
+  box-shadow: 0 10px 36px rgba(30, 58, 95, 0.09);
+  transform: translateY(-2px);
+}
+
+/* Modern Floating Navbar w/ Glassmorphism */
+.glass-nav {
+  background: rgba(30, 58, 95, 0.06); /* very light navy tint */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(84, 159, 229, 0.08);
+  box-shadow: 0 8px 30px rgba(30, 58, 95, 0.06);
+  border-radius: 0.75rem;
+  margin: 0.75rem auto;
+  max-width: calc(100% - 1.5rem);
+  padding: 0 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .glass-nav {
+    margin: 1rem auto;
+    max-width: 92%;
+    padding: 0 2rem;
+  }
+}
+
+/* Link styling with smooth animations */
+a {
+  @apply transition-all duration-300;
+  @apply relative;
+}
+
+a::after {
+  content: '';
+  @apply absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300;
+  background-color: var(--color-accent-orange);
+}
+
+a:hover::after {
+  @apply w-full;
+}
+
+@layer components {
+  /* Primary Button Component */
+  .btn-primary {
+    @apply px-6 py-2 bg-[var(--color-accent-orange)] text-[var(--color-neutral-white)] font-semibold rounded-lg text-sm transition-all duration-300 inline-flex items-center justify-center;
+    @apply hover:scale-105 active:scale-95;
+    box-shadow: 0 6px 20px rgba(247,99,0,0.18);
+  }
+
+  .btn-primary:hover {
+    box-shadow: 0 10px 30px rgba(247,99,0,0.22);
+  }
+}
+
+/* Button styling with enhanced effects */
+button {
+  @apply transition-all duration-300;
+}
+
+button:active {
+  @apply scale-95;
+}
+
+/* Input/Form styling */
+input,
+textarea {
+  @apply transition-all duration-300;
+}
+
+input:focus,
+textarea:focus {
+  @apply ring-2 ring-offset-0;
+  box-shadow: 0 0 0 3px rgba(30, 136, 229, 0.1);
+}
+
+/* Focus states for accessibility */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  @apply outline-2 outline-offset-2;
+  outline-color: #F59E0B;
+}
+
+/* Selection color */
+::selection {
+  background-color: #1E88E5;
+  color: white;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #F59E0B;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #D97706;
+}
+
+/* Animation utilities */
+.animate-on-scroll {
+  opacity: 0;
+  animation: fadeInUp 0.7s ease-out forwards;
+}
+
+.animate-on-scroll:nth-child(1) { animation-delay: 0.1s; }
+.animate-on-scroll:nth-child(2) { animation-delay: 0.2s; }
+.animate-on-scroll:nth-child(3) { animation-delay: 0.3s; }
+.animate-on-scroll:nth-child(4) { animation-delay: 0.4s; }
+.animate-on-scroll:nth-child(5) { animation-delay: 0.5s; }
+.animate-on-scroll:nth-child(6) { animation-delay: 0.6s; }
+
+/* Smooth fade-in for sections */
+.fade-in-section {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Staggered animation for lists */
+.stagger-item {
+  animation: fadeInUp 0.6s ease-out backwards;
+}
+
+.stagger-item:nth-child(1) { animation-delay: 0s; }
+.stagger-item:nth-child(2) { animation-delay: 0.1s; }
+.stagger-item:nth-child(3) { animation-delay: 0.2s; }
+.stagger-item:nth-child(4) { animation-delay: 0.3s; }
+.stagger-item:nth-child(5) { animation-delay: 0.4s; }
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Print styles */
+@media print {
+  body {
+    @apply bg-white;
+  }
+  
+  nav,
+  footer {
+    @apply hidden;
+  }
+}
+
+/* Smooth transitions for all state changes */
+.transition-smooth {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hover lift effect */
+.hover-lift {
+  transition: all 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Shimmer loading effect */
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+.shimmer {
+  animation: shimmer 2s infinite;
+  background: linear-gradient(
+    90deg,
+    #e2e8f0 25%,
+    #f1f5f9 50%,
+    #e2e8f0 75%
+  );
+  background-size: 1000px 100%;
+}
