@@ -37,7 +37,7 @@ export default function HeroSection({
       initial={{ opacity: 0, y: 32 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.75, ease: 'easeOut' }}
-      className="relative min-h-screen bg-gradient-to-br from-white via-slate-700 to-accent-blue text-white overflow-hidden"
+      className="relative min-h-[55vh] py-20 sm:py-28 bg-gradient-to-br from-white via-slate-700 to-accent-blue text-white overflow-hidden"
       style={
         backgroundImage
           ? {

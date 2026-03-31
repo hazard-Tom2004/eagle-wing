@@ -8,7 +8,8 @@ export const metadata: Metadata = {
   title: 'Eagles Wings World Changers Outreach',
   description: 'Soaring on Eagles Wings - Changing the World through Gospel Empowerment',
   icons: {
-    icon: '🦅',
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
   },
 };
 

@@ -40,12 +40,7 @@ export default function Navigation() {
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center gap-3">
-            <Link
-              href="/contact"
-              className="px-3 py-2 bg-accent-orange text-primary-navy font-medium rounded-lg text-sm transition-all duration-300 hover:shadow-lg hover:scale-105"
-            >
-              Start
-            </Link>
+           
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="text-neutral-white hover:text-accent-orange focus:outline-none p-2 transition-all duration-300"
